@@ -4,12 +4,13 @@ import { Provider } from 'react-redux';
 import Container from '../Container/Container';
 import store from '../../store';
 
-function App() {
+
+const App = () => {
   return (
-    <Provider store={store}>
+    <Provider store={store} >
       <Container />
     </Provider>
   );
-}
+};
 
 export default App;
