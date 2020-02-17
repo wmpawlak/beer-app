@@ -3,35 +3,28 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { fetchBeers } from '../../redux/actions';
+import BeersList from '../BeersList/BeersList';
 
 class Container extends React.Component {
   componentDidMount() {
-    const beers = this.props.fetchBeers();
-    console.log(beers);
-  };
+    this.props.fetchBeers();
+  }
 
   render() {
     return (
       <div>
-        Działamy!
-    </div>
+        <BeersList />
+      </div>
     );
-  };
-};
+  }
+}
 
 Container.propTypes = {
   fetchBeers: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  beers: state.beers
-});
-
 const mapDispatchToProps = {
-  fetchBeers
-}
+  fetchBeers,
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Container);
+export default connect(null, mapDispatchToProps)(Container);
