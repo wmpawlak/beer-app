@@ -10,10 +10,13 @@ const Beer = ({ beers, index }) => {
         {beers.map((s, i) => (
           <Wrapper key={i}>
             <Name>{beers[i].name}</Name>
-            <Photo src={beers[i].image_url} />
             <Tagline>{beers[i].tagline}</Tagline>
+            <Photo src={beers[i].image_url} />
             <Description>{beers[i].description}</Description>
-            <Ibu>IBU: {beers[i].ibu}</Ibu>
+            <Tips>{beers[i].brewers_tips}</Tips>
+            <Icon>
+              <i className="heart icon" />
+            </Icon>
           </Wrapper>
         ))}
       </Container>
@@ -36,49 +39,68 @@ const mapStateToProps = state => ({
 //Styled components
 const Container = styled.div`
   color: black;
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
+  max-width: 2560px;
+  background-color: #f18805;
+  font-weight: 400;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid blue;
+  border: 3px solid #d95d39;
+  border-radius: 20px;
+  margin: 10px;
+  background-color: #f0a202;
+  padding: 10px;
 `;
 
 const Name = styled.div`
-  width: 250px;
-  border: 1px solid black;
+  width: 300px;
+  height: 35px;
+  box-sizing: border-box;
   text-align: center;
-  margin: 10px;
-`;
-
-const Photo = styled.img`
-  max-height: 300px;
-  width: auto;
-  border: 1px solid yellow;
-  object-fit: contain;
+  margin: 10px 0px 10px 0px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 25px;
 `;
 
 const Tagline = styled.div`
-  width: 250px;
-  border: 1px solid black;
+  width: 340px;
+  height: 25px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0px 10px 0px;
+`;
+
+const Photo = styled.img`
+  max-height: 280px;
+  width: auto;
+  margin: 20px 10px 20px 10px;
+  object-fit: contain;
 `;
 
 const Description = styled.div`
-  width: 250px;
-  border: 1px solid black;
-  margin: 10px;
+  width: 300px;
+  text-align: justify;
 `;
 
-const Ibu = styled.div`
-  width: 250px;
-  border: 1px solid black;
+const Tips = styled.div`
+  width: 300px;
   margin: 10px;
+  text-align: justify;
+`;
+
+const Icon = styled.div`
+  color: red;
+  font-size: 30px;
+  padding: 10px 0px 10px 0px;
 `;
 
 export default connect(mapStateToProps, null)(Beer);
