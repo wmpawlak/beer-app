@@ -10,10 +10,12 @@ const Beer = ({ beers, index }) => {
         {beers.map((s, i) => (
           <Wrapper key={i}>
             <Name>{beers[i].name}</Name>
-            <Tagline>{beers[i].tagline}</Tagline>
             <Photo src={beers[i].image_url} />
-            <Description>{beers[i].description}</Description>
-            <Tips>{beers[i].brewers_tips}</Tips>
+            <Tagline>{beers[i].tagline}</Tagline>
+            <Text>
+              <Description>{beers[i].description}</Description>
+              <Tips>Tips: {beers[i].brewers_tips}</Tips>
+            </Text>
             <Icon>
               <i className="heart icon" />
             </Icon>
@@ -64,10 +66,17 @@ const Name = styled.div`
   height: 35px;
   box-sizing: border-box;
   text-align: center;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px 5px 0px;
   font-size: 24px;
   font-weight: bold;
   line-height: 25px;
+`;
+
+const Photo = styled.img`
+  max-height: 280px;
+  width: auto;
+  margin: 20px 10px 5px 10px;
+  object-fit: contain;
 `;
 
 const Tagline = styled.div`
@@ -76,31 +85,37 @@ const Tagline = styled.div`
   text-align: center;
   font-size: 18px;
   font-weight: 500;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px 15px 0px;
 `;
 
-const Photo = styled.img`
-  max-height: 280px;
-  width: auto;
-  margin: 20px 10px 20px 10px;
-  object-fit: contain;
+const Text = styled.div`
+  width: 300px;
+  height: 350px;
+  text-align: justify;
+  margin: 10px 0px 0px 0px;
 `;
 
 const Description = styled.div`
-  width: 300px;
-  text-align: justify;
+  null;
 `;
 
 const Tips = styled.div`
-  width: 300px;
-  margin: 10px;
-  text-align: justify;
+  margin: 10px 0px 0px 0px;
 `;
 
 const Icon = styled.div`
   color: red;
   font-size: 30px;
   padding: 10px 0px 10px 0px;
+
+  &:hover {
+    color: #ffce89;
+  }
+
+  &:active {
+    position: relative;
+    top: 2px;
+  }
 `;
 
 export default connect(mapStateToProps, null)(Beer);
