@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Beer from '../Beer/Beer';
 
@@ -14,6 +15,11 @@ const BeersList = ({ fav }) => {
     <Wrapper>
       <Banner>
         <Text>Beer App</Text>
+        <Link to="/">
+          <Icon>
+            <i className="home icon" />
+          </Icon>
+        </Link>
       </Banner>
       <Container>
         {fav.map((s, i) => (
@@ -50,6 +56,26 @@ const Banner = styled.div`
 const Text = styled.div`
   font-size: 48px;
   padding: 10px 0px 10px 0px;
+`;
+
+const Icon = styled.div`
+  color: #c12526;
+  font-size: 50px;
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: flex-start;
+  position: relative;
+  bottom: 25px;
+
+  &:hover {
+    color: #ffce89;
+  }
+
+  &:active {
+    bottom: 23px;
+  }
 `;
 
 const Container = styled.div`
