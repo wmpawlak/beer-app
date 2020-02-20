@@ -3,14 +3,23 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import _ from 'lodash';
 
-import { fetchBeers } from '../../redux/actions';
+import { fetchBeers, fetchNewBeers } from '../../redux/actions';
 import BeersList from '../BeersList/BeersList';
 
 class Container extends React.Component {
   componentDidMount() {
     this.props.fetchBeers();
   }
+
+  downloadNewBeers = () => {
+    const beers = this.props.beers;
+    const lastId = beers[beers.length - 1].id;
+    const idsArr = _.range(10 + lastId, lastId);
+    const ids = idsArr.join('|');
+    this.props.fetchNewBeers(ids);
+  };
 
   render() {
     return (
@@ -24,6 +33,7 @@ class Container extends React.Component {
           </Link>
         </Banner>
         <BeersList />
+        <DownloadButton onClick={this.downloadNewBeers}>load 10 more</DownloadButton>
       </Wrapper>
     );
   }
@@ -31,6 +41,9 @@ class Container extends React.Component {
 
 Container.propTypes = {
   fetchBeers: PropTypes.func,
+  fetchNewBeers: PropTypes.func,
+  length: PropTypes.number,
+  beers: PropTypes.array,
 };
 
 //Styled components
@@ -79,8 +92,38 @@ const Text = styled.div`
   padding: 10px 0px 10px 0px;
 `;
 
+const DownloadButton = styled.button`
+  border-radius: 7px;
+  border: 3px solid #d95d39;
+  font-size: 26px;
+  font-weight: 600;
+  width: 230px;
+  height: 60px;
+  text-transform: uppercase;
+  background-color: #c12526;
+  display: flex;
+  justify-content: center;
+  outline: none;
+  margin: 15px 0px 30px 0px;
+  align-self: center;
+
+  &:hover {
+    color: #f18805;
+  }
+
+  &:active {
+    position: relative;
+    top: 2px;
+  }
+`;
+
 const mapDispatchToProps = {
   fetchBeers,
+  fetchNewBeers,
 };
 
-export default connect(null, mapDispatchToProps)(Container);
+const mapStateToProps = state => ({
+  beers: state.beers,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
