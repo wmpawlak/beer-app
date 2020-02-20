@@ -33,7 +33,7 @@ class Container extends React.Component {
           </Link>
         </Banner>
         <BeersList />
-        <DownloadButton onClick={this.downloadNewBeers} />
+        <DownloadButton onClick={this.downloadNewBeers}>load 10 more</DownloadButton>
       </Wrapper>
     );
   }
@@ -93,12 +93,28 @@ const Text = styled.div`
 `;
 
 const DownloadButton = styled.button`
-  height: 50px;
-  width: 150px;
-  box-shadow: 0px 10px 14px -7px #000000a1;
-  border-radius: 10px;
+  border-radius: 7px;
+  border: 3px solid #d95d39;
   font-size: 26px;
   font-weight: 600;
+  width: 230px;
+  height: 60px;
+  text-transform: uppercase;
+  background-color: #c12526;
+  display: flex;
+  justify-content: center;
+  outline: none;
+  margin: 15px 0px 30px 0px;
+  align-self: center;
+
+  &:hover {
+    color: #f18805;
+  }
+
+  &:active {
+    position: relative;
+    top: 2px;
+  }
 `;
 
 const mapDispatchToProps = {
