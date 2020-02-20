@@ -6,21 +6,21 @@ import styled from 'styled-components';
 import { addFav } from '../../redux/actions';
 
 const Beer = ({ beers, index, addFav }) => {
-  const renderBeerDescription = i => {
+  const renderBeerDescription = index => {
     const onAddFav = () => {
-      addFav(i);
+      addFav(beers[index].id);
     };
     return (
-      <Wrapper key={beers[i]}>
-        <Name>{beers[i].name}</Name>
-        <Photo src={beers[i].image_url} />
-        <Tagline>{beers[i].tagline}</Tagline>
+      <Wrapper key={beers[index]}>
+        <Name>{beers[index].name}</Name>
+        <Photo src={beers[index].image_url} />
+        <Tagline>{beers[index].tagline}</Tagline>
         <Text>
-          <Description>{beers[i].description}</Description>
-          <Tips>Tips: {beers[i].brewers_tips}</Tips>
+          <Description>{beers[index].description}</Description>
+          <Tips>Tips: {beers[index].brewers_tips}</Tips>
         </Text>
-        <Icon>
-          <i className="heart icon" onClick={onAddFav} />
+        <Icon onClick={onAddFav}>
+          <i className="heart icon" />
         </Icon>
       </Wrapper>
     );
@@ -102,7 +102,6 @@ const Icon = styled.div`
   color: #c12526;
   font-size: 30px;
   padding: 10px 0px 10px 0px;
-  width: 20px;
 
   &:hover {
     color: #ffce89;

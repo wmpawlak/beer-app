@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -16,9 +17,11 @@ class Container extends React.Component {
       <Wrapper>
         <Banner>
           <Text>Beer App</Text>
-          <Icon>
-            <i className="heart icon" />
-          </Icon>
+          <Link to="/favs">
+            <Icon>
+              <i className="heart icon" />
+            </Icon>
+          </Link>
         </Banner>
         <BeersList />
       </Wrapper>
@@ -37,12 +40,14 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   color: #0e1428;
+  background-color: #f18805;
 `;
 
 const Banner = styled.div`
   height: 100px;
   text-align: center;
   padding: 40px;
+  margin-bottom: 20px;
   background-color: #f18805;
   font-weight: bold;
   display: flex;
@@ -50,16 +55,15 @@ const Banner = styled.div`
 `;
 
 const Icon = styled.div`
-  color: red;
+  color: #c12526;
   font-size: 50px;
-  max-width: 2560px;
+  width: 50px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-content: flex-start;
   position: relative;
   bottom: 25px;
-  left: 20px;
 
   &:hover {
     color: #ffce89;
