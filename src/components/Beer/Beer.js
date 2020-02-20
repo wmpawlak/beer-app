@@ -5,11 +5,31 @@ import styled from 'styled-components';
 
 import { addFav } from '../../redux/actions';
 
-const Beer = ({ beers, index, addFav }) => {
+const Beer = ({ beers, index, addFav, fav }) => {
   const renderBeerDescription = i => {
     const onAddFav = () => {
-      addFav(i);
+      addFav(beers[i].id);
     };
+
+    const favColor = () => {
+      let color;
+      if (fav.includes(beers[index].id)) {
+        color = '#c12526';
+      } else {
+        color = '#d95d39';
+      }
+      return color;
+    };
+
+    const changeColor = event => {
+      const icon = event.target;
+      if (fav.includes(beers[index].id)) {
+        icon.style.color = '#c12526';
+      } else {
+        icon.style.color = '#d95d39';
+      }
+    };
+
     return (
       <Wrapper key={beers[i]}>
         <Name>{beers[i].name}</Name>
@@ -19,7 +39,7 @@ const Beer = ({ beers, index, addFav }) => {
           <Description>{beers[i].description}</Description>
           <Tips>Tips: {beers[i].brewers_tips}</Tips>
         </Text>
-        <Icon>
+        <Icon style={{ color: `${favColor()}` }} onClick={changeColor}>
           <i className="heart icon" onClick={onAddFav} />
         </Icon>
       </Wrapper>
@@ -33,11 +53,13 @@ Beer.propTypes = {
   addFav: PropTypes.func,
   index: PropTypes.number,
   beers: PropTypes.array,
+  fav: PropTypes.array,
   name: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   beers: state.beers,
+  fav: state.fav,
 });
 
 const mapDispatchToProps = {
@@ -99,14 +121,13 @@ const Tips = styled.div`
 `;
 
 const Icon = styled.div`
-  color: #c12526;
   font-size: 30px;
   padding: 10px 0px 10px 0px;
   width: 20px;
 
-  &:hover {
+  ${'' /* &:hover {
     color: #ffce89;
-  }
+  } */}
 
   &:active {
     position: relative;
