@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Beer from '../Beer/Beer';
 
-const BeersList = ({ fav }) => {
+const Favs = ({ fav }) => {
   const renderFavs = i => {
     return <Beer index={i} />;
   };
@@ -87,9 +87,9 @@ const Container = styled.div`
   font-weight: 400;
 `;
 
-BeersList.propTypes = {
+Favs.propTypes = {
   index: PropTypes.number,
   fav: PropTypes.array,
 };
 
-export default connect(mapStateToProps, null)(BeersList);
+export default connect(mapStateToProps, null)(Favs);
