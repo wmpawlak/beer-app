@@ -33,7 +33,9 @@ class Container extends React.Component {
           </Link>
         </Banner>
         <BeersList />
-        <DownloadButton onClick={this.downloadNewBeers}>load 10 more</DownloadButton>
+        <DownloadButton onClick={this.downloadNewBeers}>
+          load 10 more
+        </DownloadButton>
       </Wrapper>
     );
   }
