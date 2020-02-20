@@ -37,7 +37,7 @@ const mapStateToProps = state => ({
 
 //Styled components
 const Wrapper = styled.div`
-  width: 100vw;
+  max-width: 2560px;
   height: 100vh;
   background-color: #f18805;
 `;
