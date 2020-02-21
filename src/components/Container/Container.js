@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import _ from 'lodash';
 
-import { fetchBeers, fetchNewBeers } from '../../redux/actions';
+import { fetchBeers, fetchNewBeers, fetchFavBeers } from '../../redux/actions';
 import BeersList from '../BeersList/BeersList';
 
 class Container extends React.Component {
@@ -21,13 +21,19 @@ class Container extends React.Component {
     this.props.fetchNewBeers(ids);
   };
 
+  downloadFavBeers = () => {
+    const favIds = this.props.fav;
+    const ids = favIds.join('|');
+    this.props.fetchFavBeers(ids);
+  };
+
   render() {
     return (
       <Wrapper>
         <Banner>
           <Text>Beer App</Text>
           <Link to="/favs">
-            <Icon>
+            <Icon onClick={this.downloadFavBeers}>
               <i className="heart icon" />
             </Icon>
           </Link>
@@ -41,11 +47,25 @@ class Container extends React.Component {
   }
 }
 
+const mapDispatchToProps = {
+  fetchBeers,
+  fetchNewBeers,
+  fetchFavBeers,
+};
+
+const mapStateToProps = state => ({
+  beers: state.beers,
+  favData: state.favData,
+  fav: state.fav,
+});
+
 Container.propTypes = {
   fetchBeers: PropTypes.func,
   fetchNewBeers: PropTypes.func,
+  fetchFavBeers: PropTypes.func,
   length: PropTypes.number,
   beers: PropTypes.array,
+  fav: PropTypes.array,
 };
 
 //Styled components
@@ -118,14 +138,5 @@ const DownloadButton = styled.button`
     top: 2px;
   }
 `;
-
-const mapDispatchToProps = {
-  fetchBeers,
-  fetchNewBeers,
-};
-
-const mapStateToProps = state => ({
-  beers: state.beers,
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container);

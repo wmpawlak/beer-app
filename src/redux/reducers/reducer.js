@@ -1,5 +1,10 @@
 import { defaultState } from './index';
-import { FETCH_BEERS, ADD_FAV, FETCH_NEW_BEERS } from '../actions/actionTypes';
+import {
+  FETCH_BEERS,
+  ADD_FAV,
+  FETCH_NEW_BEERS,
+  FETCH_FAV_BEERS,
+} from '../actions/actionTypes';
 
 export const reducer = (state = defaultState, action) => {
   if (action.type === FETCH_NEW_BEERS) {
@@ -7,8 +12,13 @@ export const reducer = (state = defaultState, action) => {
     return { ...state, beers: beersCopy };
   }
 
+  if (action.type === FETCH_FAV_BEERS) {
+    const favCopy = [...state.favData.concat(action.payload)];
+    return { ...state, favData: favCopy };
+  }
+
   if (action.type === FETCH_BEERS) {
-    return { ...state, beers: action.payload };
+    return { ...state, beers: action.payload, favData: [] };
   }
 
   if (action.type === ADD_FAV) {
