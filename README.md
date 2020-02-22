@@ -14,9 +14,9 @@ React, Redux, React-Router, HTML, CSS, JSX, Redux-Thunk, Styled-Components, Sema
 What makes your project stand out? Come on, there are beers *AND* squirells here!
 
 ## Installation
-1. Git clone https://github.com/wmpawlak/beer-app.git
-2. npm i
-3. npm start
+1. `git clone https://github.com/wmpawlak/beer-app.git`
+2. `npm i`
+3. `npm start`
 4. You're good to go!
 
 ## API Reference
@@ -36,4 +36,4 @@ Give proper credits. This could be a link to any repo which inspired you to buil
 Maybe later :)
 
 ## License
-[Wojtek Pawlak]()© 
+Wojtek Pawlak© 

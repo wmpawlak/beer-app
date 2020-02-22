@@ -23,13 +23,16 @@ export const reducer = (state = defaultState, action) => {
 
   if (action.type === ADD_FAV) {
     const favCopy = [...state.fav];
+    const beersDataCopy = [...state.beersData];
     if (favCopy.includes(action.payload)) {
       const index = favCopy.findIndex(x => x === action.payload);
       favCopy.splice(index, 1);
+      const indexBeer = beersDataCopy.findIndex(x => x.id === action.payload);
+      beersDataCopy.splice(indexBeer, 1);
     } else {
       favCopy.push(action.payload);
     }
-    return { ...state, fav: favCopy };
+    return { ...state, fav: favCopy, beersData: beersDataCopy };
   } else {
     return state;
   }
