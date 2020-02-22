@@ -5,10 +5,10 @@ Simple app I made for one of the recruitment processes. What it does? It simply 
 Recruitment app :)
 
 ## Screenshots
-![screenshot](./Screen1.jpg)
+![screenshot](./Screen1.JPG)
 <br />
 
-![screenshot](./Screen2.jpg)
+![screenshot](./Screen2.JPG)
 
 ## Tech/framework used
 React, Redux, React-Router, HTML, CSS, JSX, Redux-Thunk, Styled-Components, Semantic UI, ESLint, Prettier, soon I set up a CricleCI and probably Heroku or Github Pages :).
