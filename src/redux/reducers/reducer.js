@@ -22,7 +22,7 @@ export const reducer = (state = defaultState, action) => {
   }
 
   if (action.type === ADD_FAV) {
-    const favCopy = state.fav;
+    const favCopy = [...state.fav];
     if (favCopy.includes(action.payload)) {
       const index = favCopy.findIndex(x => x === action.payload);
       favCopy.splice(index, 1);

@@ -24,9 +24,9 @@ const Beer = ({ beersData, index, addFav, fav }) => {
     const changeColor = event => {
       const icon = event.target;
       if (fav.includes(beersData[index].id)) {
-        icon.style.color = '#c12526';
-      } else {
         icon.style.color = '#d95d39';
+      } else {
+        icon.style.color = '#c12526';
       }
     };
 
