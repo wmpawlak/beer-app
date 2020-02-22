@@ -8,17 +8,17 @@ import {
 
 export const reducer = (state = defaultState, action) => {
   if (action.type === FETCH_NEW_BEERS) {
-    const beersCopy = [...state.beers.concat(action.payload)];
-    return { ...state, beers: beersCopy };
+    const beersCopy = [...state.beersData.concat(action.payload)];
+    return { ...state, beersData: beersCopy };
   }
 
   if (action.type === FETCH_FAV_BEERS) {
-    const favCopy = [...state.favData.concat(action.payload)];
-    return { ...state, favData: favCopy };
+    const favCopy = [...action.payload];
+    return { ...state, beersData: favCopy };
   }
 
   if (action.type === FETCH_BEERS) {
-    return { ...state, beers: action.payload, favData: [] };
+    return { ...state, beersData: action.payload };
   }
 
   if (action.type === ADD_FAV) {

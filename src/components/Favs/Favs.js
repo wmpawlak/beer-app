@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Beer from '../Beer/Beer';
 
-const Favs = ({ favData }) => {
+const Favs = ({ beersData }) => {
   const renderFavs = i => {
     return <Beer index={i} />;
   };
@@ -22,7 +22,7 @@ const Favs = ({ favData }) => {
         </Link>
       </Banner>
       <Container>
-        {favData.map((s, i) => (
+        {beersData.map((s, i) => (
           <div key={i}>{renderFavs(i)}</div>
         ))}
       </Container>
@@ -31,14 +31,13 @@ const Favs = ({ favData }) => {
 };
 
 const mapStateToProps = state => ({
-  beers: state.beers,
+  beersData: state.beersData,
   fav: state.fav,
-  favData: state.fav,
 });
 
 Favs.propTypes = {
   index: PropTypes.number,
-  favData: PropTypes.array,
+  beersData: PropTypes.array,
 };
 
 //Styled components

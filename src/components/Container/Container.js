@@ -14,8 +14,8 @@ class Container extends React.Component {
   }
 
   downloadNewBeers = () => {
-    const beers = this.props.beers;
-    const lastId = beers[beers.length - 1].id;
+    const beersData = this.props.beersData;
+    const lastId = beersData[beersData.length - 1].id;
     const idsArr = _.range(10 + lastId, lastId);
     const ids = idsArr.join('|');
     this.props.fetchNewBeers(ids);
@@ -54,8 +54,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-  beers: state.beers,
-  favData: state.favData,
+  beersData: state.beersData,
   fav: state.fav,
 });
 
@@ -64,7 +63,7 @@ Container.propTypes = {
   fetchNewBeers: PropTypes.func,
   fetchFavBeers: PropTypes.func,
   length: PropTypes.number,
-  beers: PropTypes.array,
+  beersData: PropTypes.array,
   fav: PropTypes.array,
 };
 

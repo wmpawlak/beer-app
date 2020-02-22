@@ -5,14 +5,14 @@ import styled from 'styled-components';
 
 import Beer from '../Beer/Beer';
 
-const BeersList = ({ beers }) => {
+const BeersList = ({ beersData }) => {
   const renderBeer = i => {
     return <Beer index={i} />;
   };
 
   return (
     <Container>
-      {beers.map((s, i) => (
+      {beersData.map((s, i) => (
         <div key={i}>{renderBeer(i)}</div>
       ))}
     </Container>
@@ -20,12 +20,12 @@ const BeersList = ({ beers }) => {
 };
 
 const mapStateToProps = state => ({
-  beers: state.beers,
+  beersData: state.beersData,
 });
 
 BeersList.propTypes = {
   index: PropTypes.number,
-  beers: PropTypes.array,
+  beersData: PropTypes.array,
 };
 
 //Styled components
