@@ -1,4 +1,4 @@
 export const defaultState = {
-  beers: [],
+  beersData: [],
   fav: [],
 };

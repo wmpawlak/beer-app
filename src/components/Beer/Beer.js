@@ -5,15 +5,15 @@ import styled from 'styled-components';
 
 import { addFav } from '../../redux/actions';
 
-const Beer = ({ beers, index, addFav, fav }) => {
+const Beer = ({ beersData, index, addFav, fav }) => {
   const renderBeerDescription = i => {
     const onAddFav = () => {
-      addFav(beers[i].id);
+      addFav(beersData[i].id);
     };
 
     const favColor = () => {
       let color;
-      if (fav.includes(beers[index].id)) {
+      if (fav.includes(beersData[index].id)) {
         color = '#c12526';
       } else {
         color = '#d95d39';
@@ -23,21 +23,21 @@ const Beer = ({ beers, index, addFav, fav }) => {
 
     const changeColor = event => {
       const icon = event.target;
-      if (fav.includes(beers[index].id)) {
-        icon.style.color = '#c12526';
-      } else {
+      if (fav.includes(beersData[index].id)) {
         icon.style.color = '#d95d39';
+      } else {
+        icon.style.color = '#c12526';
       }
     };
 
     return (
-      <Wrapper key={beers[i]}>
-        <Name>{beers[i].name}</Name>
-        <Photo src={beers[i].image_url} />
-        <Tagline>{beers[i].tagline}</Tagline>
+      <Wrapper key={beersData[i]}>
+        <Name>{beersData[i].name}</Name>
+        <Photo src={beersData[i].image_url} />
+        <Tagline>{beersData[i].tagline}</Tagline>
         <Text>
-          <Description>{beers[i].description}</Description>
-          <Tips>Tips: {beers[i].brewers_tips}</Tips>
+          <Description>{beersData[i].description}</Description>
+          <Tips>Tips: {beersData[i].brewers_tips}</Tips>
         </Text>
         <Icon style={{ color: `${favColor()}` }} onClick={changeColor}>
           <i className="heart icon" onClick={onAddFav} />
@@ -52,13 +52,13 @@ const Beer = ({ beers, index, addFav, fav }) => {
 Beer.propTypes = {
   addFav: PropTypes.func,
   index: PropTypes.number,
-  beers: PropTypes.array,
+  beersData: PropTypes.array,
   fav: PropTypes.array,
   name: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
-  beers: state.beers,
+  beersData: state.beersData,
   fav: state.fav,
 });
 
