@@ -1,17 +1,20 @@
 ## Beer App
-Simple app I made for one of the recruitment processes. What it does? It simply just downloads and renders out couple of beers. Down at the bottom there's a button fetch more beers. Top left corner there is changing Home/Favourites button. You can add beers to your favourites (personally I love the one in a squirell). Their ids are stored in your local storage, so they should be available whenever.
+Simple app I made for one of the recruitment processes. What it does? It simply just downloads and renders out couple of beers. Down at the bottom there's a button fetch more beers. Top left corner there is changing Home/Favourites button. You can add beers to your favourites (personally I love the one in a squirrel). Their ids are stored in your local storage, so they should be available whenever.
 
 ## Motivation
 Recruitment app :)
 
 ## Screenshots
-Include logo/demo screenshot etc.
+![screenshot](./Screen1.jpg)
+<br />
+
+![screenshot](./Screen2.jpg)
 
 ## Tech/framework used
 React, Redux, React-Router, HTML, CSS, JSX, Redux-Thunk, Styled-Components, Semantic UI, ESLint, Prettier, soon I set up a CricleCI and probably Heroku or Github Pages :).
 
 ## Features
-What makes your project stand out? Come on, there are beers *AND* squirells here!
+What makes your project stand out? Come on, there are beers *AND* squirrels here!
 
 ## Installation
 1. `git clone https://github.com/wmpawlak/beer-app.git`
