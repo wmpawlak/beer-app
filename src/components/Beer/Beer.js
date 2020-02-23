@@ -11,25 +11,6 @@ const Beer = ({ beersData, index, addFav, fav }) => {
       addFav(beersData[i].id);
     };
 
-    const favColor = () => {
-      let color;
-      if (fav.includes(beersData[index].id)) {
-        color = '#c12526';
-      } else {
-        color = '#d95d39';
-      }
-      return color;
-    };
-
-    const changeColor = event => {
-      const icon = event.target;
-      if (fav.includes(beersData[index].id)) {
-        icon.style.color = '#d95d39';
-      } else {
-        icon.style.color = '#c12526';
-      }
-    };
-
     return (
       <Wrapper key={beersData[i]}>
         <Name>{beersData[i].name}</Name>
@@ -39,7 +20,7 @@ const Beer = ({ beersData, index, addFav, fav }) => {
           <Description>{beersData[i].description}</Description>
           <Tips>Tips: {beersData[i].brewers_tips}</Tips>
         </Text>
-        <Icon style={{ color: `${favColor()}` }} onClick={changeColor}>
+        <Icon fav={fav.includes(beersData[i].id)}>
           <i className="heart icon" onClick={onAddFav} />
         </Icon>
       </Wrapper>
@@ -120,14 +101,19 @@ const Tips = styled.div`
   margin: 10px 0px 0px 0px;
 `;
 
-const Icon = styled.div`
+const Icon = styled.button`
   font-size: 30px;
   padding: 10px 0px 10px 0px;
-  width: 20px;
+  width: 100px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: ${({ fav }) => (fav ? '#c12526' : '#d95d39')};
 
-  ${'' /* &:hover {
-    color: #ffce89;
-  } */}
+  &:hover {
+    transform: scale(1.1);
+  }
 
   &:active {
     position: relative;

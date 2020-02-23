@@ -7,10 +7,6 @@ import { Link } from 'react-router-dom';
 import Beer from '../Beer/Beer';
 
 const Favs = ({ beersData }) => {
-  const renderFavs = i => {
-    return <Beer index={i} />;
-  };
-
   return (
     <Wrapper>
       <Banner>
@@ -23,7 +19,7 @@ const Favs = ({ beersData }) => {
       </Banner>
       <Container>
         {beersData.map((s, i) => (
-          <div key={i}>{renderFavs(i)}</div>
+          <Beer index={i} key={i} />
         ))}
       </Container>
     </Wrapper>
@@ -42,7 +38,7 @@ Favs.propTypes = {
 
 //Styled components
 const Wrapper = styled.div`
-  max-width: 2560px;
+  max-width: 100vw;
   height: 100vh;
   background-color: #f18805;
 `;

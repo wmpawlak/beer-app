@@ -6,14 +6,10 @@ import styled from 'styled-components';
 import Beer from '../Beer/Beer';
 
 const BeersList = ({ beersData }) => {
-  const renderBeer = i => {
-    return <Beer index={i} />;
-  };
-
   return (
     <Container>
       {beersData.map((s, i) => (
-        <div key={i}>{renderBeer(i)}</div>
+        <Beer key={i} index={i} />
       ))}
     </Container>
   );
@@ -35,7 +31,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  max-width: 2560px;
+  max-width: 100vw;
   background-color: #f18805;
   font-weight: 400;
 `;
