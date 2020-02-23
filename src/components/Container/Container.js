@@ -69,7 +69,7 @@ Container.propTypes = {
 
 //Styled components
 const Wrapper = styled.div`
-  max-width: 2560px;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
