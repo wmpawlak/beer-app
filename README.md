@@ -1,8 +1,5 @@
 ## Beer App
-Simple app I made for one of the recruitment processes. What it does? It simply just downloads and renders out couple of beers. Down at the bottom there's a button fetch more beers. Top left corner there is changing Home/Favourites button. You can add beers to your favourites (personally I love the one in a squirrel). Their ids are stored in your local storage, so they should be available whenever.
-
-## Motivation
-Recruitment app :)
+Simple app I made for fun. What it does? It simply just downloads and renders out couple of beers. Down at the bottom there's a button fetch more beers. Top left corner there is changing Home/Favourites button. You can add beers to your favourites (personally I love the one in a squirrel). Their ids are stored in your local storage, so they should be available whenever.
 
 ## Screenshots
 ![screenshot](./Screen1.JPG)
